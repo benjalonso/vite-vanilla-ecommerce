@@ -24,11 +24,11 @@ let flag = false;
 let page = 0;
 let cart = [];
 
+// Evento que al cargar la pagina ejecutara la funcion fetchData para mostrar los productos en la interfaz de usuario
 window.onload = function () {
   fetchData(page);
 };
-
-
+// Funcion que filtra los productos por busqueda
 const filterItems = (ev) => {
   let spin = true; // Variable boolean para mostrar ion-spinner
   let timeLeft = 1; // Variable number del temporizador, se renueva cada vez que se ejectuta el metodo (al teclear sobre el campo)
@@ -47,7 +47,7 @@ const filterItems = (ev) => {
     }, 500); // Tiempo en ms en que se ejecutará la fracción de código dentro el intervalo cuando dejamos de teclear
   }
 };
-
+// Funcion que muestra los productos en la interfaz de usuario
 const showProducts = (data) => {
   $products.innerHTML = "";
 
@@ -66,7 +66,7 @@ const showProducts = (data) => {
   });
   $products.appendChild($fragment);
 };
-
+// Funcion que traera los productos de la api y ejecutara la funcion showProducts para mostrarlos en la interfaz de usuario
 const fetchData = async (page = { page }) => {
   try {
     // const response = await fetch('https://servidorcatalogobsal3.herokuapp.com/products');
@@ -79,7 +79,7 @@ const fetchData = async (page = { page }) => {
     console.log(error);
   }
 };
-
+// Funcion que trae los productos por busqueda desde la api segun el parametro que se le pase directamente desde el input de busqueda
 const fetchDataBySearching = async (name, page = { page }) => {
   try {
     const response = await fetch(
@@ -93,6 +93,8 @@ const fetchDataBySearching = async (name, page = { page }) => {
     console.log(error);
   }
 };
+
+// Funcion que muestra productos por categorias segun el parametro que se le pase
 const fetchDataByCategory = async (category, page = { page }) => {
   try {
     const response = await fetch(
@@ -125,6 +127,7 @@ const showCart = () => {
   showFooter();
 };
 
+// Funcion que muestra un resumen del carrito y si esta vacio muestra un mensaje de que esta vacio
 const showFooter = () => {
   $cardFooter.innerHTML = "";
   $badgeCart.textContent = "";
@@ -152,21 +155,16 @@ const showFooter = () => {
     cart = [];
     showCart();
   });
-  // const $cart = document.getElementById("cart");
-  // $badgeCart.addEventListener("change", () => {
-  //   if ($badgeCart.textContent !== 0) {
-  //     $cart.className += 'cart'
-  //   } 
-  // });
 };
 
+//Funcion que ejecuta el adicion de productos al carrito, pasando el objeto a ser añadido como parametro
 const addToCart = (e) => {
   if (e.target.classList.contains("addButton")) {
     setCart(e.target.parentElement);
   }
   e.stopPropagation(); // Evita que se propague el evento al padre
 };
-
+// Funcion que desglosa el objeto y lo añade al carrito, si el producto ya existe en el carrito solo aumenta la cantidad
 const setCart = (obj) => {
   const product = {
     id: parseInt(obj.querySelector("h2").textContent),
@@ -181,6 +179,8 @@ const setCart = (obj) => {
   showCart();
 };
 
+// Funcion que ejecuta la eliminacion o adicion de productos del carrito segun el boton presionado y el id del producto
+// y actualiza el carrito cada vez que se presiona un boton
 const btnActions = (e) => {
   if (e.target.classList.contains("btn-info")) {
     const product = cart[e.target.dataset.id];
@@ -189,22 +189,24 @@ const btnActions = (e) => {
     showCart();
   } else if (e.target.classList.contains("btn-danger")) {
     const product = cart[e.target.dataset.id];
-    product.quantity--; 
-    if (product.quantity === 0) { 
+    product.quantity--;
+    if (product.quantity === 0) {
       delete cart[e.target.dataset.id];
-    
     }
     showCart();
   }
   e.stopPropagation();
 };
 
-$cartBody.addEventListener("click", e => {
+// Evento que escucha el boton de adicion o eliminacion de productos del carrito
+$cartBody.addEventListener("click", (e) => {
   btnActions(e);
 });
 
+// Evento que ejecuta la funcion de busqueda de productos por nombre y actualiza el catalogo
 $buscador.addEventListener("keyup", filterItems);
 
+// Eventos que ejecutan la funcion de busqueda de productos por categoria y actualiza el catalogo segun la categoria pasada como parametro
 $energetica.addEventListener("click", () => {
   fetchDataByCategory(1, page);
 });
@@ -227,6 +229,7 @@ $vodka.addEventListener("click", () => {
   fetchDataByCategory(7, page);
 });
 
+// Eventos que realizan la paginacion de los productos
 $siguiente.addEventListener("click", () => {
   page++;
   fetchData(page);
@@ -239,11 +242,13 @@ $anterior.addEventListener("click", () => {
   }
 });
 
+// Evento que despliega todos los productos del catalogo al hacer click en el titulo
 $titulo.addEventListener("click", () => {
   page = 0;
   fetchData(page);
 });
 
+// Evento que agrega los productos al carrito al hacer click en el boton de añadir
 $products.addEventListener("click", (e) => {
   addToCart(e);
 });
