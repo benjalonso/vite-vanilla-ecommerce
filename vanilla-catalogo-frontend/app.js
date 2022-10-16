@@ -69,7 +69,9 @@ const showProducts = (data) => {
 // Funcion que traera los productos de la api y ejecutara la funcion showProducts para mostrarlos en la interfaz de usuario
 const fetchData = async (page = { page }) => {
   try {
-    // const response = await fetch('https://servidorcatalogobsal3.herokuapp.com/products');
+    // const response = await fetch(
+    //   `https://servidorcatalogobsal3.herokuapp.com/products?page=${page}`
+    // );
     const response = await fetch(`http://localhost:3500/products?page=${page}`);
     const data = await response.json();
     catalogo = data;
