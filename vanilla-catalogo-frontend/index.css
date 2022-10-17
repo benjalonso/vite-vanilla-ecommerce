@@ -1,4 +1,4 @@
-/* css para el input de busqueda*/
+/* Css para el input de busqueda*/
 .group {
   display: flex;
   line-height: 28px;
@@ -41,7 +41,7 @@ input:hover {
   height: 1rem;
 }
 
-/* add button css */
+/* Add button css */
 button {
   width: 40px;
   height: 40px;
@@ -72,7 +72,7 @@ button:active {
   margin-bottom: 13px;
 }
 
-/* cart animation*/
+/* Cart animation*/
 .cart:hover {
   /* Comienza la animacion shake */
   animation: shake 0.5s;
