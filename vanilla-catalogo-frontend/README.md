@@ -9,7 +9,7 @@ Proyecto realizado en Javascript puro, que entrega una interfaz de usuario con u
 
 ![](./docs/test.png
 
-[Demo](https://faztweb.github.io/svelte-rick-and-morty/)
+[Demo](https://storied-pavlova-d545a2.netlify.app/)
 
 ## Estructura del proyecto
 
