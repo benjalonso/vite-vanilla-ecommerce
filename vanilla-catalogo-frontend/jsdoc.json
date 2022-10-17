@@ -1,0 +1,22 @@
+{
+    "pluggins": [],
+    "source" : {
+        "include": [
+            "app.js",
+            "index.html",
+            "index.css"
+        ],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules|docs)"
+    },
+    "templates" : {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    },
+    "opts": {
+        "destination": "./documentation",
+        "recurse": true,
+        "verbose": true
+    }
+
+}
