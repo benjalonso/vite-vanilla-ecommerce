@@ -7,7 +7,7 @@ Proyecto realizado en Javascript puro, que entrega una interfaz de usuario con u
 - Categorias 
 - Filtro de busqueda
 
-![](./docs/test.png)
+![](../docs/test.png)
 
 [Demo](https://storied-pavlova-d545a2.netlify.app/)
 
