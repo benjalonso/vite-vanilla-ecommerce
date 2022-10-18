@@ -83,7 +83,7 @@ const showProducts = (data) => {
  */
 const fetchData = async (page = { page }) => {
   try {
-    const response = await fetch(`http://localhost:3500/products?page=${page}`);
+    const response = await fetch(`https://servidorcatalogobsal3.herokuapp.com//products?page=${page}`);
     const data = await response.json();
     catalogo = data;
     showProducts(catalogo);
@@ -101,7 +101,7 @@ const fetchData = async (page = { page }) => {
 const fetchDataBySearching = async (name, page = { page }) => {
   try {
     const response = await fetch(
-      `http://localhost:3500/productsBySearchBar?page=${page}&name=${name}`
+      `https://servidorcatalogobsal3.herokuapp.com/productsBySearchBar?page=${page}&name=${name}`
     );
     const data = await response.json();
     catalogo = data;
@@ -119,7 +119,7 @@ const fetchDataBySearching = async (name, page = { page }) => {
 const fetchDataByCategory = async (category, page = { page }) => {
   try {
     const response = await fetch(
-      `http://localhost:3500/productsByCategory?page=${page}&category=${category}`
+      `https://servidorcatalogobsal3.herokuapp.com/productsByCategory?page=${page}&category=${category}`
     );
     const data = await response.json();
     catalogo = data;
