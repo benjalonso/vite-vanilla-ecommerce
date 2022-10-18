@@ -9,7 +9,7 @@ Proyecto realizado en Javascript puro, que entrega una interfaz de usuario con u
 
 ![](./docs/test.png)
 
-[Demo](https://storied-pavlova-d545a2.netlify.app/)
+[Demo](https://astonishing-moxie-2f63a9.netlify.app/)
 
 ## Estructura del proyecto
 
