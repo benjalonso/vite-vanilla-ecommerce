@@ -83,7 +83,7 @@ const showProducts = (data) => {
  */
 const fetchData = async (page = { page }) => {
   try {
-    const response = await fetch(`https://servidorcatalogobsal3.herokuapp.com//products?page=${page}`);
+    const response = await fetch(`https://servidorcatalogobsal3.herokuapp.com/products?page=${page}`);
     const data = await response.json();
     catalogo = data;
     showProducts(catalogo);
