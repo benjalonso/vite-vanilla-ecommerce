@@ -34,7 +34,6 @@ window.onload = function () {
 };
 /**
  * Funcion que filtra los productos por busqueda y los muestra en la interfaz de usuario
- * 
  * @param {String} ev 
  */
 const filterItems = (ev) => {
@@ -80,6 +79,8 @@ const showProducts = (data) => {
 /**
  *Funcion que traera los productos de la api y ejecutara la funcion showProducts para mostrarlos en la interfaz de usuario
  * @param {number} page 
+ * 
+ * 
  */
 const fetchData = async (page = { page }) => {
   try {
@@ -94,7 +95,6 @@ const fetchData = async (page = { page }) => {
 };
 /**
  * Funcion que trae los productos por busqueda desde la api segun el parametro que se le pase directamente desde el input de busqueda
- * 
  * @param {string} name 
  * @param {number} page 
  */
