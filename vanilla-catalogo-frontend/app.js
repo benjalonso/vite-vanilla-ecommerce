@@ -37,6 +37,7 @@ window.onload = function () {
  * @param {String} ev 
  */
 const filterItems = (ev) => {
+  let flag;
   let spin = true; // Variable boolean para mostrar ion-spinner
   let timeLeft = 1; // Variable number del temporizador, se renueva cada vez que se ejectuta el metodo (al teclear sobre el campo)
   if (!flag) {
