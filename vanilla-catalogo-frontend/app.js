@@ -20,44 +20,31 @@ const $cerveza = document.getElementById("cerveza");
 const $vodka = document.getElementById("vodka");
 const $titulo = document.getElementById("titulo");
 const $badgeCart = document.getElementById("badgeCart");
-
+const $actual = document.getElementById("actual");
 let catalogo = [];
 let page = 0;
 let cart = [];
 /**
  * Evento que al cargar la pagina ejecutara la funcion fetchData para mostrar los productos en la interfaz de usuario
- * 
+ *
  */
 
 window.onload = function () {
   fetchData(page);
+  $actual.textContent = page;
 };
 /**
  * Funcion que filtra los productos por busqueda y los muestra en la interfaz de usuario
- * @param {String} ev 
+ * @param {String} ev
  */
-const filterItems = (ev) => {
-  let flag;
-  let spin = true; // Variable boolean para mostrar ion-spinner
-  let timeLeft = 1; // Variable number del temporizador, se renueva cada vez que se ejectuta el metodo (al teclear sobre el campo)
-  if (!flag) {
-    flag = true; // variable boolean para generar un solo intervalo
-    interval = setInterval(() => {
-      if (timeLeft > 0) {
-        timeLeft--;
-      } else {
-        clearInterval(interval);
-        spin = false;
-        flag = false;
-        fetchDataBySearching(ev.target.value, page);
-        console.log("Metodo a ejecutar " + ev); // Fracción de código a ejecutar
-      }
-    }, 500); // Tiempo en ms en que se ejecutará la fracción de código dentro el intervalo cuando dejamos de teclear
-  }
-};
+
+const filterItems  = (ev) => { 
+  ev.target.value ? fetchDataBySearching(ev.target.value, page):fetchData(page)
+  $buscador.textContent = '';
+   }
 /**
- *Funcion que muestra los productos en la interfaz de usuario 
- * @param {Array} data 
+ *Funcion que muestra los productos en la interfaz de usuario
+ * @param {Array} data
  */
 const showProducts = (data) => {
   $products.innerHTML = "";
@@ -79,13 +66,15 @@ const showProducts = (data) => {
 };
 /**
  *Funcion que traera los productos de la api y ejecutara la funcion showProducts para mostrarlos en la interfaz de usuario
- * @param {number} page 
- * 
- * 
+ * @param {number} page
+ *
+ *
  */
 const fetchData = async (page = { page }) => {
   try {
-    const response = await fetch(`https://servidorcatalogobsal3.herokuapp.com/products?page=${page}`);
+    const response = await fetch(
+      `https://servidorcatalogobsal3.herokuapp.com/products?page=${page}`
+    );
     const data = await response.json();
     catalogo = data;
     showProducts(catalogo);
@@ -96,8 +85,8 @@ const fetchData = async (page = { page }) => {
 };
 /**
  * Funcion que trae los productos por busqueda desde la api segun el parametro que se le pase directamente desde el input de busqueda
- * @param {string} name 
- * @param {number} page 
+ * @param {string} name
+ * @param {number} page
  */
 const fetchDataBySearching = async (name, page = { page }) => {
   try {
@@ -106,7 +95,7 @@ const fetchDataBySearching = async (name, page = { page }) => {
     );
     const data = await response.json();
     catalogo = data;
-    console.log(catalogo);
+    // console.log(catalogo);
     showProducts(catalogo);
   } catch (error) {
     console.log(error);
@@ -114,8 +103,8 @@ const fetchDataBySearching = async (name, page = { page }) => {
 };
 /**
  * Funcion que muestra productos por categorias segun el parametro que se le pase desde el boton de la categoria correspondiente
- * @param {number} category 
- * @param {number} page 
+ * @param {number} category
+ * @param {number} page
  */
 const fetchDataByCategory = async (category, page = { page }) => {
   try {
@@ -124,7 +113,6 @@ const fetchDataByCategory = async (category, page = { page }) => {
     );
     const data = await response.json();
     catalogo = data;
-    console.log(catalogo);
     showProducts(catalogo);
   } catch (error) {
     console.log(error);
@@ -184,8 +172,8 @@ const showFooter = () => {
   });
 };
 /**
- * Funcion que ejecuta el adicion de productos al carrito, pasando el objeto a ser añadido como parametro 
- * @param {object} e 
+ * Funcion que ejecuta el adicion de productos al carrito, pasando el objeto a ser añadido como parametro
+ * @param {object} e
  */
 const addToCart = (e) => {
   if (e.target.classList.contains("addButton")) {
@@ -195,7 +183,7 @@ const addToCart = (e) => {
 };
 /**
  * Funcion que desglosa el objeto y lo añade al carrito, si el producto ya existe en el carrito solo aumenta la cantidad
- * @param {object} obj 
+ * @param {object} obj
  */
 const setCart = (obj) => {
   const product = {
@@ -239,55 +227,80 @@ $cartBody.addEventListener("click", (e) => {
 /**
  * Evento que ejecuta la funcion de busqueda de productos por nombre y actualiza el catalogo
  */
-$buscador.addEventListener("keyup", filterItems);
-/** 
+$buscador.addEventListener("keyup", (e)=>{
+  if (e.code === 'Enter')
+  {
+      e.preventDefault();
+      filterItems(e)
+  }
+});
+/**
  * Eventos que ejecutan la funcion de busqueda de productos por categoria y actualiza el catalogo segun la categoria pasada como parametro
  */
 $energetica.addEventListener("click", () => {
   fetchDataByCategory(1, page);
+  page = 0
+  $actual.textContent = page;
 });
 $pisco.addEventListener("click", () => {
   fetchDataByCategory(2, page);
+  page = 0
+  $actual.textContent = page;
 });
 $ron.addEventListener("click", () => {
   fetchDataByCategory(3, page);
+    page = 0
+  $actual.textContent = page;
 });
 $bebida.addEventListener("click", () => {
   fetchDataByCategory(4, page);
+    page = 0
+  $actual.textContent = page;
 });
 $snack.addEventListener("click", () => {
   fetchDataByCategory(5, page);
+    page = 0
+  $actual.textContent = page;
 });
 $cerveza.addEventListener("click", () => {
   fetchDataByCategory(6, page);
+    page = 0
+  $actual.textContent = page;
 });
 $vodka.addEventListener("click", () => {
   fetchDataByCategory(7, page);
+    page = 0
+  $actual.textContent = page;
 });
 /**
  * Eventos que realizan la paginacion de los productos
  */
 $siguiente.addEventListener("click", () => {
+  let limit = Math.trunc(catalogo.count/8)
+if(page < limit){
   page++;
   fetchData(page);
-});
+  $actual.textContent = page;
+}});
 
 $anterior.addEventListener("click", () => {
   if (page !== 0) {
     page--;
     fetchData(page);
+    $actual.textContent = page;
   }
 });
 
-/** 
+/**
  * Evento que despliega todos los productos del catalogo al hacer click en el titulo
  */
 $titulo.addEventListener("click", () => {
-  page = 0;
   fetchData(page);
+  page = 0;
+  $actual.textContent = page;
 });
 
-/** 
+/**
  * Evento que agrega los productos al carrito al hacer click en el boton de añadir
  */
 $products.addEventListener("click", (e) => {

@@ -18,57 +18,57 @@
 </head>
 
 <body style="background: linear-gradient(to right, #07c8f98a, #09a5f39c);">
-    <nav class="navbar sticky-top bg-info container-fluid" style="margin-bottom: 3rem">
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+        <div class="container-fluid ">
             <h1 id="titulo" style="font-family: 'Sriracha', cursive;
             text-align: center;
-            font-size:3rem;"
-            class="ms-4 mb-3">Ecommerce Test</h1>
-            <div class="nav-item" id="energetica"> 
-                <a id='subrayado' class="nav-link active " aria-current="page" href="#">Energetica</a>
-            </div>
-            <div class="nav-item " id="pisco">
-                <a id='subrayado'class="nav-link active " aria-current="page" href="#">Pisco</a>
-            </div>
-            <div class="nav-item" id="ron">
-                <a id='subrayado'class="nav-link active " aria-current="page" href="#">Ron</a>
-            </div>
-            <div class="nav-item" id="bebida">
-                <a id='subrayado'class="nav-link active " aria-current="page" href="#">Bebida</a>
-            </div>
-            <div class="nav-item" id="snack">
-                <a id='subrayado'class="nav-link active " aria-current="page" href="#">Snack</a>
-            </div>
-            <div class="nav-item" id="cerveza">
-                <a id='subrayado'class="nav-link active " aria-current="page" href="#">Cerveza</a>
-            </div>
-            <div class="nav-item" id="vodka">
-                <a id='subrayado'class="nav-link active " aria-current="page" href="#">Vodka</a>
-            </div>
-        <div class="group float-end me-2">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-                <g>
-                    <path
-                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-                    </path>
-                </g>
-            </svg>
-            <form class="float-end">
-                <input placeholder="Buscar..." type="search" class="input" name="buscador" id="buscador">
+            font-size:2.5rem;"
+            class="ms-4 mb-3">Ecommerce</h1>
+          <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                <li class="nav-item" id="energetica">
+                    <a id='subrayado' class="nav-link active " aria-current="page" href="#">Energetica</a>
+                  </li>     
+                  <li class="nav-item" id="pisco">
+                    <a id='subrayado' class="nav-link active " aria-current="page" href="#">Pisco</a>
+                  </li>  
+                  <li class="nav-item" id="ron">
+                    <a id='subrayado' class="nav-link active " aria-current="page" href="#">Ron</a>
+                  </li>  
+                  <li class="nav-item" id="bebida">
+                    <a id='subrayado' class="nav-link active " aria-current="page" href="#">Bebida</a>
+                  </li>  
+                  <li class="nav-item" id="snack">
+                    <a id='subrayado' class="nav-link active " aria-current="page" href="#">Snack</a>
+                  </li>  
+                  <li class="nav-item" id="cerveza">
+                    <a id='subrayado' class="nav-link active " aria-current="page" href="#">Cerveza</a>
+                  </li>  
+                  <li class="nav-item" id="vodka">
+                    <a id='subrayado' class="nav-link active " aria-current="page" href="#">Vodka</a>
+                  </li>         
+            </ul>
+            <form class="d-flex" role="search">
+              <input id="buscador" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
             </form>
-        </div>
-        
-        <div class="me-5 rounded-circle cart" id="cart">
-            <button class="btn btn-primary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                <span id="badgeCart" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" >
-                    0
-                  </span>
-             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                  
-             </svg>                    
-            </button>
-        </div>
-          </nav>
+          </div>
+          <div>
+              <button class="btn btn-primary rounded-circle cart" id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                  <span id="badgeCart" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" >
+                      0
+                    </span>
+                    
+               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    
+               </svg>                    
+              </button>
+          </div>
+      </nav>
+
     <div class="container">
         
         <br />
@@ -79,16 +79,19 @@
             <nav class="pagination float-end">
                 <ul class="pagination ">
                     <li id="anterior" class="page-item"><a class="page-link" href="#">Anterior</a></li>
+                    <li class="page-item"><a class="page-link" id="actual" href="#">1</a></li>
                     <li id="siguiente" class="page-item"><a class="page-link" href="#">Siguiente</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
+
+
     </div>
 
      <!--  Seccion offCanvas del carro de compras-->
-     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="width: 40rem;">
+     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="width: 80%;">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Resumen del carro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
