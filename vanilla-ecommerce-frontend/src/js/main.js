@@ -39,6 +39,7 @@
   */
  
  const filterItems  = (ev) => { 
+  ev.preventDefault()
    ev.target.value ? fetchDataBySearching(ev.target.value, page):fetchData(page)
    $buscador.textContent = '';
     }
@@ -175,16 +176,15 @@
   * Funcion que ejecuta el adicion de productos al carrito, pasando el objeto a ser añadido como parametro
   * @param {object} e
   */
+
  const addToCart = (e) => {
    if (e.target.classList.contains("addButton")) {
      setCart(e.target.parentElement);
    }
    e.stopPropagation(); // Evita que se propague el evento al padre
  };
- /**
-  * Funcion que desglosa el objeto y lo añade al carrito, si el producto ya existe en el carrito solo aumenta la cantidad
-  * @param {object} obj
-  */
+
+ 
  const setCart = (obj) => {
    const product = {
      id: parseInt(obj.querySelector("h2").textContent),
@@ -228,9 +228,9 @@
   * Evento que ejecuta la funcion de busqueda de productos por nombre y actualiza el catalogo
   */
  $buscador.addEventListener("keyup", (e)=>{
+   e.preventDefault();
    if (e.code === 'Enter')
    {
-       e.preventDefault();
        filterItems(e)
    }
  });

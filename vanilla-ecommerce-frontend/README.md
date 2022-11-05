@@ -1,6 +1,6 @@
 ## Catalogo Vanilla JS
 
-Proyecto realizado en Javascript puro, que entrega una interfaz de usuario con un catalogo de productos, que contiene las siguiente funcionalidades: 
+Ecommerce básico realizado en Javascript puro, que entrega una interfaz de usuario con un catalogo de productos, que contiene las siguiente funcionalidades: 
 
 - Paginacion
 - Carro de compras 
@@ -15,12 +15,15 @@ Proyecto realizado en Javascript puro, que entrega una interfaz de usuario con u
 
 ```bash
 .
-├── app.js
-├── index.html
-├── index.css
-└── docs
-   └── test.png
+├── package.json
+├── vite.config.js
+├── README.md
+└── src
+    ├── css
+    │   └── index.css
+    ├── js
+    │   └── app.js
+    └── index.html
 
-
-1 directory, 4 files
+3 directories, 6 files
 ```
