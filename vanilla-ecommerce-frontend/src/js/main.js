@@ -1,6 +1,5 @@
-/**
- *  Las constantes que llevan $ son elementos del DOM que se encuentran en el HTML y que se utilizan en el JS
- */
+//  Las constantes que llevan $ son elementos del DOM que se encuentran en el HTML y que se utilizan en el JS
+ 
  const $products = document.getElementById("products");
  const $cardTemplate = document.getElementById("cardTemplate").content;
  const $cartTemplate = document.getElementById("cartTemplate").content;
@@ -24,29 +23,23 @@
  let catalogo = [];
  let page = 0;
  let cart = [];
- /**
-  * Evento que al cargar la pagina ejecutara la funcion fetchData para mostrar los productos en la interfaz de usuario
-  *
-  */
- 
+
+//  Evento que al cargar la pagina ejecutara la funcion fetchData para mostrar los productos en la interfaz de usuario
  window.onload = function () {
    fetchData(page);
    $actual.textContent = page;
  };
- /**
-  * Funcion que filtra los productos por busqueda y los muestra en la interfaz de usuario
-  * @param {String} ev
-  */
- 
+
+
+// Funcion que filtra los productos por busqueda y los muestra en la interfaz de usuario
  const filterItems  = (ev) => { 
   ev.preventDefault()
    ev.target.value ? fetchDataBySearching(ev.target.value, page):fetchData(page)
    $buscador.textContent = '';
     }
- /**
-  *Funcion que muestra los productos en la interfaz de usuario
-  * @param {Array} data
-  */
+
+
+// Funcion que muestra los productos en la interfaz de usuario
  const showProducts = (data) => {
    $products.innerHTML = "";
  
@@ -65,12 +58,9 @@
    });
    $products.appendChild($fragment);
  };
- /**
-  *Funcion que traera los productos de la api y ejecutara la funcion showProducts para mostrarlos en la interfaz de usuario
-  * @param {number} page
-  *
-  *
-  */
+
+
+// Funcion que traera los productos de la api y ejecutara la funcion showProducts para mostrarlos en la interfaz de usuario
  const fetchData = async (page = { page }) => {
    try {
      const response = await fetch(
@@ -84,11 +74,9 @@
      console.log(error);
    }
  };
- /**
-  * Funcion que trae los productos por busqueda desde la api segun el parametro que se le pase directamente desde el input de busqueda
-  * @param {string} name
-  * @param {number} page
-  */
+
+
+// Funcion que trae los productos por busqueda desde la api segun el parametro que se le pase directamente desde el input de busqueda
  const fetchDataBySearching = async (name, page = { page }) => {
    try {
      const response = await fetch(
@@ -102,11 +90,9 @@
      console.log(error);
    }
  };
- /**
-  * Funcion que muestra productos por categorias segun el parametro que se le pase desde el boton de la categoria correspondiente
-  * @param {number} category
-  * @param {number} page
-  */
+
+
+//  Funcion que muestra productos por categorias segun el parametro que se le pase desde el boton de la categoria correspondiente
  const fetchDataByCategory = async (category, page = { page }) => {
    try {
      const response = await fetch(
@@ -119,10 +105,9 @@
      console.log(error);
    }
  };
- /**
-  * Funcion que muestra productos que hay actualmente en el carrito
-  * en la interfaz de usuario
-  */
+
+
+//  Funcion que muestra productos que hay actualmente en el carrito
  const showCart = () => {
    $cartBody.innerHTML = "";
    cart.map((product) => {
@@ -140,10 +125,9 @@
    $cartBody.appendChild($fragment);
    showFooter();
  };
- /**
-  * Funcion que muestra un resumen del carrito y si esta vacio muestra un mensaje de que esta vacio
-  * @returns {void}
-  */
+
+
+//  Funcion que muestra un resumen del carrito y si esta vacio muestra un mensaje de que esta vacio
  const showFooter = () => {
    $cardFooter.innerHTML = "";
    $badgeCart.textContent = "";
@@ -172,11 +156,9 @@
      showCart();
    });
  };
- /**
-  * Funcion que ejecuta el adicion de productos al carrito, pasando el objeto a ser añadido como parametro
-  * @param {object} e
-  */
 
+
+//  Funcion que ejecuta el adicion de productos al carrito, pasando el objeto a ser añadido como parametro
  const addToCart = (e) => {
    if (e.target.classList.contains("addButton")) {
      setCart(e.target.parentElement);
@@ -198,10 +180,9 @@
    cart[product.id] = { ...product };
    showCart();
  };
- /**
-  * Funcion que ejecuta la eliminacion o adicion de productos del carrito segun el boton presionado y el id del producto y actualiza el carrito cada vez que se presiona un boton
-  * @param {number} e
-  */
+
+
+//  Funcion que ejecuta la eliminacion o adicion de productos del carrito segun el boton presionado y el id del producto y actualiza el carrito cada vez que se presiona un boton
  const btnActions = (e) => {
    if (e.target.classList.contains("btn-info")) {
      const product = cart[e.target.dataset.id];
@@ -218,15 +199,14 @@
    }
    e.stopPropagation();
  };
- /**
-  * Evento que escucha el boton de adicion o eliminacion de productos del carrito
-  */
+
+//  Evento que escucha el boton de adicion o eliminacion de productos del carrito
  $cartBody.addEventListener("click", (e) => {
    btnActions(e);
  });
- /**
-  * Evento que ejecuta la funcion de busqueda de productos por nombre y actualiza el catalogo
-  */
+ 
+ 
+//  Evento que ejecuta la funcion de busqueda de productos por nombre y actualiza el catalogo
  $buscador.addEventListener("keyup", (e)=>{
    e.preventDefault();
    if (e.code === 'Enter')
@@ -234,9 +214,9 @@
        filterItems(e)
    }
  });
- /**
-  * Eventos que ejecutan la funcion de busqueda de productos por categoria y actualiza el catalogo segun la categoria pasada como parametro
-  */
+
+
+//  Eventos que ejecutan la funcion de busqueda de productos por categoria y actualiza el catalogo segun la categoria pasada como parametro
  $energetica.addEventListener("click", () => {
    fetchDataByCategory(1, page);
    page = 0
@@ -272,9 +252,9 @@
      page = 0
    $actual.textContent = page;
  });
- /**
-  * Eventos que realizan la paginacion de los productos
-  */
+
+
+//  Eventos que realizan la paginacion de los productos
  $siguiente.addEventListener("click", () => {
    let limit = Math.trunc(catalogo.count/8)
  if(page < limit){
@@ -291,18 +271,16 @@
    }
  });
  
- /**
-  * Evento que despliega todos los productos del catalogo al hacer click en el titulo
-  */
- $titulo.addEventListener("click", () => {
+
+//  Evento que despliega todos los productos del catalogo al hacer click en el titulo
+$titulo.addEventListener("click", () => {
    fetchData(page);
    page = 0;
    $actual.textContent = page;
  });
  
- /**
-  * Evento que agrega los productos al carrito al hacer click en el boton de añadir
-  */
+ 
+//  Evento que agrega los productos al carrito al hacer click en el boton de añadir
  $products.addEventListener("click", (e) => {
    addToCart(e);
  });
